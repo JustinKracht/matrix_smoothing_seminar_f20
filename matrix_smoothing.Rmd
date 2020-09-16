@@ -1,5 +1,5 @@
 ---
-title: "Smoothing Indefinite Correlation Matrices"
+title: "Factor Loading Recovery for Smoothed Tetrachoric Correlation Matrices"
 author: "Justin D. Kracht"
 date: "September 2020"
 output: 
@@ -120,12 +120,15 @@ knitr::include_graphics("figures/thompsonthomson.png",
 ```
 \end{column}
 \begin{column}{0.5\textwidth}
-$\mathbf{R}_3 = \begin{bmatrix} 1 & -1 & 1 \\ -1 & 1 & 1 \\ 1 & 1 & 1 \\ \end{bmatrix}$ \\
-$\boldsymbol{\lambda} = [2, 2, -1] $
+$\mathbf{R}_3 = \begin{bmatrix} 1 & -1 & 1 \\ -1 & 1 & 1 \\ 1 & 1 & 1 \\ \end{bmatrix}$
 \end{column}
 \end{columns}
 
-\vspace{1.5cm}
+\vspace{.5cm}
+
+\center $\boldsymbol{\lambda} = [2, 2, -1]$  
+
+\vspace{.5cm}
 
 - Item 1 and Item 2 are correlated $-1$  
 - Item 1 and Item 3 are correlated $1$  
@@ -169,7 +172,7 @@ A \textcolor{cadmium-orange}{matrix smoothing algorithm} is a procedure that mod
 
 ## The Higham Alternating Projections Algorithm (2002)
 
-Intuition: Find the closest PSD correlation matrix ($\Rapa$) to a given indefinite correlation matrix ($\Rnpd$) by iteratively projecting between two sets:
+\alert{Intuition}: Find the closest PSD correlation matrix ($\Rapa$) to a given indefinite correlation matrix ($\Rnpd$) by iteratively projecting between two sets:
 
 - $\mathcal{S}$: The set containing all possible $p \times p$ symmetric matrices that are PSD  
 
@@ -200,7 +203,7 @@ knitr::include_graphics(
 
 ## The Bentler-Yuan Algorithm (2011)
 
-Intuition: Shrink the correlations involving variables with minimum trace factor analysis [MTFA; @jamshidian1998] estimated communalities $\geq 1$.
+\alert{Intuition}: Shrink the correlations involving variables with minimum trace factor analysis [MTFA; @jamshidian1998] estimated communalities $\geq 1$.
 
 ## The Bentler-Yuan Algorithm (2011)
 
@@ -223,7 +226,7 @@ $h_i$ is the MTFA communality estimate for the $i$th item
 
 ## The Knol-Berger Algorithm (1991)
 
-Intuition: Replace all negative eigenvalues with a small positive constant in the eigenvalue decomposition and then scale the result to a correlation matrix.
+\alert{Intuition}: Replace all negative eigenvalues with a small positive constant in the eigenvalue decomposition and then scale the result to a correlation matrix.
 
 ## The Knol-Berger Algorithm (1991)
 
@@ -481,6 +484,12 @@ knitr::include_graphics(
   - Remove problematic items  
   - Full-information factor analysis  
   - Bayesian/penalized tetrachoric estimation  
+  
+## Simulation Code
+
+\center https://z.umn.edu/matrix_smoothing  
+
+\center https://github.umn.edu/krach018/masters_thesis
 
 # Backup Slides
 
@@ -572,4 +581,5 @@ Minimize the discrepancy function:
 $$
 F_{M L}(\mathbf{R}, \hat{\mathbf{P}})=\log |\hat{\mathbf{P}}|-\log |\mathbf{R}|+\operatorname{tr}\left(\mathbf{S} \hat{\mathbf{P}}^{-1}\right)-p
 $$
+
 ## References {.allowframebreaks}
